@@ -10,17 +10,17 @@
                     if(isset($_POST['unban']))
                     {
                         $id = mysqli_real_escape_string($conn, $_POST['id']);
-                        $ban = mysqli_query($conn, "UPDATE tbl_guess SET status='Sleeping' WHERE id = '$id'");
+                        $ban = mysqli_query($conn1, "UPDATE customer SET status='Sleeping' WHERE id = '$id'");
                     }
                     if(isset($_POST['ban']))
                     {
                         $id = mysqli_real_escape_string($conn, $_POST['id']);
-                        $ban = mysqli_query($conn, "UPDATE tbl_guess SET status='Banning' WHERE id = '$id'");
+                        $ban = mysqli_query($conn1, "UPDATE customer SET status='Banning' WHERE id = '$id'");
                     }
                     if(isset($_POST['del']))
                     {
                         $id = mysqli_real_escape_string($conn, $_POST['id']);
-                        $ban = mysqli_query($conn, "DELETE FROM tbl_guess WHERE id = '$id'");
+                        $ban = mysqli_query($conn1, "DELETE FROM customer WHERE id = '$id'");
                     }
                     if(isset($_SESSION['update']))
                     {
