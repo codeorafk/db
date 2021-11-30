@@ -153,3 +153,18 @@ CREATE TABLE DRINK
     Size INT UNSIGNED	DEFAULT NULL,
     PRIMARY KEY (Id)
 );
+
+DROP PROCEDURE IF EXISTS insertUser;
+delimiter //
+create procedure insertUser(in inputUsername varchar(255), in inputPass VARCHAR(255), in inputIsAdmin TINYINT)
+usernef: BEGIN
+	declare ct int; 
+    select count(*) from (user) where username = inputUsername into ct;
+    if ct = 1 then
+		SELECT 'Có thằng hay con gì đó xài username này rồi bạn, đổi lại đi bạn ơi' as message;
+        leave usernef;
+	end if ;
+		select 'oke roi do' as message;
+		insert into user VALUES (inputUsername, inputPass, inputIsAdmin);
+end//
+delimiter ;
