@@ -1,0 +1,99 @@
+.divider-text {
+    position: relative !important;
+    text-align: center !important;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+.divider-text span {
+    padding: 7px !important;
+    font-size: 12px !important;
+    position: relative !important;   
+    z-index: 2 !important;
+}
+.divider-text:after {
+    content: "" !important;
+    position: absolute !important;
+    width: 100% !important;
+    border-bottom: 1px solid #ddd !important;
+    top: 55% !important;
+    left: 0 !important;
+    z-index: 1 !important;
+}
+
+.btn-facebook {
+    background-color: #405D9D !important;
+    color: #fff !important;
+}
+.btn-twitter {
+    background-color: #42AEEC !important;
+    color: #fff !important;
+    min-width: 100px !important;
+}
+
+
+/* Popup container - can be anything you want */
+.popup {
+    /* position: relative; */
+    /* display: inline-block; */
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+  .popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 0.25s;
+    animation: fadeIn 0.25s;
+  }
+  
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  p.d-hidden{
+    /* display: none !important; */
+    display: none;
+  }
+/* .card-body { */
+        /* margin: auto;  */
+        /* float: none; */
+        
+        /* margin-bottom: 10px; */
+/* } */
