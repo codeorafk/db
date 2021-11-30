@@ -6,7 +6,9 @@ Database in model folder
 
 3. Make Changes to settings
 
-Go to 'config' folder and Open 'constants.php' file. Then make changes on following constants
+Go to 'config' folder and Open 'copyconstants.php' file. Then make changes on following constants
+
+turn on powershell and cp config/constants.php config/copyconstant.php
 ```php
 <?php 
 //Start Session
