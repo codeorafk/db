@@ -1,5 +1,70 @@
 
 <?php include('partials/menu.php'); ?>
+<?php 
+    //CHeck whether the Submit Button is Clicked or NOt
+    if(isset($_POST['edit_submit']))
+    {
+        // cnDB
+        
+        // $id_new = mysqli_real_escape_string($conn1, $_POST['id_new']);
+        
+        $date_new = mysqli_real_escape_string($conn1, $_POST['date_new']);
+
+        $namePn_new = mysqli_real_escape_string($conn1, $_POST['namePn_new']);
+        $phone_new = mysqli_real_escape_string($conn1, $_POST['phone_new']);
+        $ID_b_new = mysqli_real_escape_string($conn1, $_POST['ID_b_new']);
+        if (!(!empty($date_new) && !empty($namePn_new) &&  !empty($phone_new) && !empty($ID_b_new))){ 
+            echo "Missing Some Input";   
+        }
+        else {
+            $res = mysqli_query($conn1, "call AddImportOrder('$date_new','$namePn_new', '$phone_new', '$ID_b_new',)");
+            if($res==true)
+            {
+                //Category Updated
+                echo "Insert import order successfully" ;
+            }
+            else
+            {
+                //failed to update category
+                echo "Fail to insert import order" ;
+            }
+        }
+        
+        // $res2 = mysqli_query($conn1, "INSERT INTO tbl_food SET title = '$title', image_name = '$image_name', featured = '$featured', active = '$active',description='$des',category_id=$category ,price='$price'");
+
+        
+        // //2. SQL to check whether the user with username and password exists or not==========================================
+        // $sql = "SELECT * FROM customer WHERE username='$username'";
+
+        // //3. Execute the Query
+        // $res = mysqli_query($conn1, $sql);
+
+        // //4. COunt rows to check whether the user exists or not
+        // $count = mysqli_num_rows($res);
+
+    
+        // $user = $username;
+        
+        // $sqlInsert1 = "CALL insertUser('$username', '$password' , 1);" ;
+        // $res1 = mysqli_query($conn1, $sqlInsert1);
+        // $count = mysqli_num_rows($res1);
+        // echo $count;
+        // $message = mysqli_fetch_assoc($res1);
+        //     // exit;
+        // // }
+        // if($message['message'] == 'oke roi do'){
+        //     echo $full_name.$email.$user.$address.$phone;
+        //     $res2 = mysqli_query($conn2, "INSERT INTO customer set full_name='$full_name', email='$email', Sex='M', userName='$user', address='$address', phone='$phone', status='Unactive' ");
+        //     header('location:'.view.'index.php');
+        //     $_SESSION['guess'] = $username;
+        // }
+
+
+
+    }
+
+
+?>
 
 <script>
     function addNew() {
@@ -19,7 +84,7 @@
                 <!-- Button to Add Admin -->
         <div class="row">
             <div class="col-1"></div>
-            <button class="btn btn-primary" style="margin: 1%;" id="addNew" onclick="addNew();">Thêm mới</button>
+            <button class="btn btn-primary" style="margin: 1%;" id="addNew" onclick="addNew();">Thêm đơn nhập hàng mới</button>
         </div>
         
 
@@ -31,7 +96,7 @@
             <div class="form-group row">
                 <div class="col-1"></div>
                 <label class="col-2 col-form-label" for="id_new">Import ID (optional):</label>
-                <input type="text" class="form-control col-7" id="id_new" name="id_new">
+                <input type="number" class="form-control col-7" id="id_new" name="id_new">
             </div>
             <div class="form-group row">
                 <div class="col-1"></div>
@@ -55,7 +120,7 @@
             </div>
             <div class="form-group row">
             <div class="offset-3">
-                <button class="btn btn-secondary ml-auto" style="min-width: 150%" name="edit_submit" id="edit_submit">I'm sure about that</button>
+                <button class="btn btn-secondary ml-auto" style="min-width: 150%" name="edit_submit" id="edit_submit" type="submit">I'm sure about that</button>
             </div>
             </div>
         </form>
