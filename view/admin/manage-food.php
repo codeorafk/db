@@ -205,7 +205,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <div class="offset-3">
-                                                <button class="btn-edit-food btn btn-secondary" style="submit">Sửa</button>
+                                                <button class="btn-edit-food btn btn-secondary" type="submit">Sửa</button>
                                                 </div>
                                             </div>
                                             </form>

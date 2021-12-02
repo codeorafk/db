@@ -34,36 +34,36 @@ create table Dependent(
     Dob				date 			DEFAULT NULL,
     primary key	(Essn, FDName)
 );
- 
+
 -- Uy
 
-CREATE TABLE rxtw.branch (
+CREATE TABLE branch (
   ID 	INT UNSIGNED 	NOT NULL 	AUTO_INCREMENT,
   BName	VARCHAR(255) 	NOT NULL,
   Address	VARCHAR(255)	NULL,
   Phone_num VARCHAR(255) 	NULL,
-  PRIMARY KEY (ID),
-  UNIQUE INDEX ID_UNIQUE (ID ASC) VISIBLE
+  PRIMARY KEY (ID)
+-- UNIQUE INDEX ID_UNIQUE (ID ASC) VISIBLE
 );
 
-CREATE TABLE rxtw.user (
+CREATE TABLE user (
     username	VARCHAR(255)	NOT NULL,           -- Username -> username
     password	 	VARCHAR(255)	NOT NULL, 		-- pass->password
     IsAdmin TINYINT NULL,
-    PRIMARY KEY (Username),
-    UNIQUE INDEX Username_UNIQUE (Username ASC) VISIBLE
+    PRIMARY KEY (Username)
+    -- UNIQUE INDEX Username_UNIQUE (Username ASC) VISIBLE
 );
     
 CREATE TABLE customer (
-  id	int unsigned	NOT NULL	AUTO_INCREMENT,       ---
+  id	int unsigned	NOT NULL	AUTO_INCREMENT,       -- fasdf
   full_name varchar(255)	DEFAULT NULL,             --
-  phone varchar(10) DEFAULT NULL,                   --phone
+  phone varchar(10) DEFAULT NULL,                   -- phone
   Sex 		char(1) 	DEFAULT NULL,
   userName varchar(255) DEFAULT NULL,               -- username
   address varchar(255),                             -- them vao
   email varchar(150),                               -- them vao
-  status text
-  PRIMARY KEY 	(ID), -- them vao
+  status varchar(10),
+  PRIMARY KEY 	(id), -- them vao
   UNIQUE KEY 	ID_UNIQUE (ID)
 );
     
