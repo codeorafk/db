@@ -22,8 +22,7 @@
     $customer_address = $row['address'];
     $status = $row['status'];
     $customer_username = $row['userName'];
-
-        
+       
     if(isset($_POST['submitStt'])) {
         global $conn;
         global $status;

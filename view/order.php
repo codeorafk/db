@@ -7,8 +7,8 @@
  
         <?php
             if(isset($_SESSION['guess'])){
-                $username = mysqli_real_escape_string($conn, $_SESSION['guess']);
-                $shit = mysqli_query($conn, "SELECT * FROM tbl_guess WHERE username ='$username'");
+                $username = mysqli_real_escape_string($conn1, $_SESSION['guess']);
+                $shit = mysqli_query($conn1, "SELECT * FROM customer WHERE userName ='$username'");
                 $guess = mysqli_fetch_assoc($shit);
             }
             if(isset($_COOKIE["cart"])) {
