@@ -2,7 +2,7 @@
 <?php include('partials/menu.php'); ?>
 <?php 
     //CHeck whether the Submit Button is Clicked or NOt
-    if(isset($_POST['edit_submit']))
+    if(isset($_POST['insert_submit']))
     {
         // cnDB
         
@@ -101,7 +101,7 @@
             <div class="form-group row">
                 <div class="col-1"></div>
                 <label class="col-2 col-form-label" for="date_new">Import Date:</label>
-                <input type="date" class="form-control col-7" id="date_new" name="date_new">
+                <input type="text" class="form-control col-7" id="date_new" name="date_new">
             </div>
             <div class="form-group row">
                 <div class="col-1"></div>
@@ -120,7 +120,7 @@
             </div>
             <div class="form-group row">
             <div class="offset-3">
-                <button class="btn btn-secondary ml-auto" style="min-width: 150%" name="edit_submit" id="edit_submit" type="submit">I'm sure about that</button>
+                <button class="btn btn-secondary ml-auto" style="min-width: 150%" name="insert_submit" id="insert_submit" type="submit">I'm sure about that</button>
             </div>
             </div>
         </form>

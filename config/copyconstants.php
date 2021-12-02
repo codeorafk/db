@@ -13,10 +13,16 @@
     define('DB_PASSWORD', '');
     define('DB_NAME', 'restaurant');
     
-    define('LOCALHOST1', 'localhost:3306');
-    define('DB_USERNAME1', 'root');
-    define('DB_PASSWORD1', '');
-    define('DB_NAME1', 'rxtw');
+    define('LOCALHOST1', 'localhost:3306');     //  your mysql server
+    define('DB_USERNAME1', 'root');             //  your mysql server
+    define('DB_PASSWORD1', '');                 //  your mysql server
+    define('DB_NAME1', 'rxtw');                 //  your mysql server
+    
+    define('LOCALHOST2', 'localhost:8111');     // rxtw in phpmyadmin
+    define('DB_USERNAME2', 'root');             // rxtw in phpmyadmin
+    define('DB_PASSWORD2', '');                 // rxtw in phpmyadmin
+    define('DB_NAME2', 'rxtw');                 // rxtw in phpmyadmin
+
     $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME) or die(mysqli_error()); //Database Connection
     // $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error()); //SElecting Database
     $conn1 = mysqli_connect(LOCALHOST1, DB_USERNAME1, DB_PASSWORD1, DB_NAME1) or die(mysqli_error());
