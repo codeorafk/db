@@ -85,11 +85,13 @@ ul {
     list-style-type: none;
     display: flex;
 }
-ul li{
+ul li{  
     margin: 0 10px;
+    margin-top: 5px;
 }
 #cart{
     outline: none;
+    margin-top: -2px;
 }
 #cart::-moz-focus-inner{
     

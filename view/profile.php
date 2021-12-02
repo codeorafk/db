@@ -1,10 +1,10 @@
 <?php include('../config/constants.php'); ?>
 <?php
     $username = $_SESSION['guess'];
-    $sql = "SELECT * FROM tbl_guess WHERE username='$username'";
+    $sql = "SELECT * FROM customer WHERE username='$username'";
     // $sql = "SELECT * FROM tbl_guess ORDER BY id DESC"; // DIsplay the Latest Order at First
     //Execute Query
-    $res = mysqli_query($conn, $sql);
+    $res = mysqli_query($conn1, $sql);
     //Count the Rows
     $count = mysqli_num_rows($res);
 
@@ -21,132 +21,63 @@
     $customer_email = $row['email'];
     $customer_address = $row['address'];
     $status = $row['status'];
-    $customer_username = $row['username'];
+    $customer_username = $row['userName'];
 
         
-
-    function toggleStatus() {
-        global $conn;
-        global $status;
-        $username = $_SESSION['guess'];
-        $sql = "SELECT * FROM tbl_guess WHERE username='$username'";
-        $res = mysqli_query($conn, $sql);
-        //Count the Rows
-        $count = mysqli_num_rows($res);
-        $row=mysqli_fetch_assoc($res);
-        $currStt = $row['status'];
-        if ($currStt == 'Banning') {
-            return "Banning";
-        }
-        if ($currStt == 'Active') {
-            $sql2 = "UPDATE tbl_guess SET status = 'Sleeping' WHERE username='$username'";
-            $res2 = mysqli_query($conn, $sql2);
-            if($res2==true)
-            {
-                //Category Updated
-                // echo "Category Updated Successfully" ;
-            }
-            else
-            {
-                //failed to update category
-                // echo "Failed to Update Category" ;
-            }
-            // $status = 'Sleeping';
-            // header("Location: /profile.php");
-            // header("Refresh:1; url=profile.php");
-            return "Sleeping";
-        }
-        $sql1 = "UPDATE tbl_guess SET status = 'Active' WHERE username='$username'";
-        $res1 = mysqli_query($conn, $sql1);
-        if($res1==true)
-        {
-            //Category Updated
-            // echo "Category Updated Successfully" ;
-        }
-        else
-        {
-            //failed to update category
-            // echo "Failed to Update Category" ;
-        }
-        // $status = 'Active';
-        // header("Location: /profile.php");
-        // header("Refresh:1; url=profile.php");
-        return "Active";
-    }
     if(isset($_POST['submitStt'])) {
         global $conn;
         global $status;
         $username = $_SESSION['guess'];
-        $sql = "SELECT * FROM tbl_guess WHERE username='$username'";
-        $res = mysqli_query($conn, $sql);
-        //Count the Rows
+        $sql = "SELECT * FROM customer WHERE username='$username'";
+        $res = mysqli_query($conn1, $sql);
         $count = mysqli_num_rows($res);
         $row=mysqli_fetch_assoc($res);
         $currStt = $row['status'];
         if ($currStt == 'Banning') {
-            // return;
         }
         elseif ($currStt == 'Active') {
-            $sql2 = "UPDATE tbl_guess SET status = 'Sleeping' WHERE username='$username'";
-            $res2 = mysqli_query($conn, $sql2);
+            $sql2 = "UPDATE customer SET status = 'Sleeping' WHERE username='$username'";
+            $res2 = mysqli_query($conn1, $sql2);
             $status = 'Sleeping';
-            
-            // return "Sleeping";
         }
         else {
-            $sql1 = "UPDATE tbl_guess SET status = 'Active' WHERE username='$username'";
-            $res1 = mysqli_query($conn, $sql1);
+            $sql1 = "UPDATE customer SET status = 'Active' WHERE username='$username'";
+            $res1 = mysqli_query($conn1, $sql1);
             $status = 'Active';
         }
     }  
 
     if(isset($_POST['submit']))
     {
-        //Process for Login
-        //1. Get the Data from Login form
-        // $username = $_POST['username'];
-        // $password = md5($_POST['password']);
-        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $username = mysqli_real_escape_string($conn1, $_POST['username']);
         
-        $raw_password = md5($_POST['password']);
-        $password = mysqli_real_escape_string($conn, $raw_password);
+        // $raw_password = md5($_POST['password']);
+        // $password = mysqli_real_escape_string($conn1, $raw_password);
 
-        $raw_password_re = md5($_POST['password_re']);
-        $password_re = mysqli_real_escape_string($conn, $raw_password_re);
+        // $raw_password_re = md5($_POST['password_re']);
+        // $password_re = mysqli_real_escape_string($conn1, $raw_password_re);
 
 
-        $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $phone = mysqli_real_escape_string($conn, $_POST['phone']);
-        $address = mysqli_real_escape_string($conn, $_POST['address']);
+        $full_name = mysqli_real_escape_string($conn1, $_POST['full_name']);
+        $email = mysqli_real_escape_string($conn1, $_POST['email']);
+        $phone = mysqli_real_escape_string($conn1, $_POST['phone']);
+        $address = mysqli_real_escape_string($conn1, $_POST['address']);
 
         //2. SQL to check whether the user with username and password exists or not
-        $sql = "SELECT * FROM tbl_guess WHERE username='$username'";
+        $sql = "SELECT * FROM customer WHERE username='$username'";
 
         //3. Execute the Query
-        $res = mysqli_query($conn, $sql);
+        $res = mysqli_query($conn1, $sql);
 
         //4. COunt rows to check whether the user exists or not
         $count = mysqli_num_rows($res);
-
-        if(false)
-        {
-            
-            $message = "Trùng username rồi mai phen";
-            echo "<script type='text/javascript'>alert('$message');</script>";  
-
-        } else
-        {
-            $sqlInsert = "UPDATE tbl_guess SET (`full_name`, `email`, `username`, `address`, `password`, `phone`)
-            VALUES ('$customer_name', '$customer_email', '$customer_username', '$customer_address', '$password', '$customer_contact',)";
-            // VALUES ('{$id}', '{$name}', '{$year}')";
-    
-            if ($conn->query($sqlInsert) === TRUE) {
-                echo "Edit dữ liệu thành công";
-            } else {
-                echo "Error: " . $sqlInsert . "<br>" . $conn->error;
-            }
-            // exit;
+        $sqlInsert = "UPDATE customer SET full_name = '$full_name', email='$email', phone='$phone', address='$address' ";
+        // VALUES ('{$id}', '{$name}', '{$year}')";
+        $resss = mysqli_query($conn2, $sqlInsert);
+        if ($resss == TRUE) {
+            echo "Edit dữ liệu thành công";
+        } else {
+            echo "Error: " . $sqlInsert . "<br>" . $conn2->error;
         }
     }
     
@@ -218,16 +149,10 @@
                     <li class="list-group-item text-right">
                         <span class="pull-left">
                         <strong>Status</strong></span>
-                        <!-- <span id="status" onclick="document.getElementById('status').innerHTML =  '<?php //echo toggleStatus();?>'  ">
-                            <?php //echo $status;
-                            ?>
-                        </span> -->
-                        <!-- <form action="" method="POST" class="text-center"> -->
                             <button class="btn btn-primary" id="status" name="submitStt" type="submit">
                                 <?php echo $status;
                                 ?>
                             </button>
-                        <!-- </form> -->
 
                     </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
@@ -308,7 +233,7 @@
                                     <label for="Address">
                                         <h4>Address</h4>
                                     </label>
-                                    <input type="Address" class="form-control" id="Address" placeholder="somewhere" title="enter a location" value="<?php
+                                    <input name="address" class="form-control" id="Address" placeholder="somewhere" title="enter a location" value="<?php
                                         echo $customer_address;
                                     ?>">
                                 </div>
@@ -331,14 +256,16 @@
                                     <input type="password" class="form-control" name="password_re" id="password_re" placeholder="password again" title="enter your password2.">
                                 </div>
                             </div>
+                            
                             <div class="form-group">
-                                <div class="col-xs-12">
-                                    <br>
-                                    <button class="btn btn-lg btn-success" type="submit" name="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                    <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                                </div>
+                                <div class="col-xs-6">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit" name="submit"> Save</button>
+                                <button class="btn btn-lg" type="button"> Reset</button>
+                                </div>  
                             </div>
                         </form>
+                        
 
                         <hr>
 

@@ -59,7 +59,12 @@
             $message = mysqli_fetch_assoc($res1);
             // exit;
         // }
-
+        if($message['message'] == 'oke roi do'){
+            echo $full_name.$email.$user.$address.$phone;
+            $res2 = mysqli_query($conn2, "INSERT INTO customer set full_name='$full_name', email='$email', Sex='M', userName='$user', address='$address', phone='$phone', status='Unactive' ");
+            header('location:'.view.'index.php');
+            $_SESSION['guess'] = $username;
+        }
 
     }
 
@@ -171,19 +176,7 @@
         </div> <!-- form-group// -->      
         <div class="messagetxt" style="color: red">
             <?php 
-                if($message['message'] == 'oke roi do'){
-                    echo $full_name.$email.$user.$address.$phone;
-                    $res2 = mysqli_query($conn2, "INSERT INTO customer set full_name='$full_name', email='$email', Sex='M', userName='$user', address='$address', phone='$phone', status='Unactive' ");
-                    if($res2 == true){
-                        echo "okeoke oke";
-                    }
-                    else
-                    {
-                        echo $conn2->error;
-                    }
-                    echo 'okê con gà đen rồi đó bạn ơi';
-                }
-                else{
+                if($message['message'] != 'oke roi do'){
                     echo $message['message'];
                 }
 
