@@ -1,4 +1,3 @@
-
 <?php include('partials-front/menu.php'); ?>
 <section class="food-search">
     <div class="container">
@@ -40,17 +39,19 @@
         ?>
         <fieldset>
             <legend>Delivery Details</legend>
+            <div class="order-label">ID</div>
+            <input type="input" name="guestid">
             <div class="order-label">Full Name</div>
             <input type="text" name="full-name" placeholder="E.g. Nguyen Tran Quoc Uy" class="input-responsive" value="<?php if(isset($_SESSION['guess'])) { echo $guess['full_name']; } ?>" required>
 
             <div class="order-label">Phone Number</div>
-            <input type="tel" name="contact" placeholder="E.g. 0708xxxxxx" class="input-responsive" value="<?php if(isset($_SESSION['guess'])) { echo $guess['phone']; } ?>" required>
+            <input type="tel" name="contact" placeholder="E.g. 0708xxxxxx" class="input-responsive" value="<?php if(isset($_SESSION['guess'])) { echo $guess['phone']; } else echo 0;?>" required>
 
             <div class="order-label">Email</div>
             <input type="email" name="email" placeholder="E.g. uy.nguyen.this@hcmut.edu.vn" class="input-responsive" value="<?php if(isset($_SESSION['guess'])) { echo $guess['email']; } ?>" required>
 
             <div class="order-label">Address</div>
-            <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required><?php if(isset($_SESSION['guess'])) { echo $guess['address']; } ?></textarea>
+            <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required><?php if(isset($_SESSION['guess'])) { echo $guess['address'];} ?></textarea>
 
             <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
         </fieldset>   

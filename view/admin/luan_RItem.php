@@ -24,63 +24,15 @@ if ($countInit > 0) {
 if (isset($_POST['insert_submit'])) {
     // cnDB
 
-    // $id_new = mysqli_real_escape_string($conn1, $_POST['id_new']);
+    $id_new = mysqli_real_escape_string($conn1, $_POST['id_new']);
 
     // $date_new = mysqli_real_escape_string($conn1, $_POST['date_new']);
 
     $namePn_new = mysqli_real_escape_string($conn1, $_POST['namePn_new']);
-    $phone_new = mysqli_real_escape_string($conn1, $_POST['phone_new']);
-    $ID_b_new = mysqli_real_escape_string($conn1, $_POST['ID_b_new']);
-    $now = date("Y-m-d");
-    // $res2 = mysqli_query($conn, "INSERT INTO tbl_order SET status='Đang xử lí', order_date='$now', total=0, customer_name='$name_guess', customer_contact='$phone_guess', customer_email='$email_guess', customer_address='$address_guess' ");
-
-    // if (!(!empty($namePn_new) &&  !empty($phone_new) && !empty($ID_b_new))){ 
-    if (empty($namePn_new) ||  empty($phone_new) || empty($ID_b_new)) {
-        echo "Missing Some Input";
-    } else {
-        $resInsert = mysqli_query($conn1, "call AddImportOrder('$now','$namePn_new', '$phone_new', '$ID_b_new');");
-        if ($resInsert == true) {
-            echo "Insert import order successfully";
-            // $message = mysqli_fetch_assoc($resInsert);
-            // echo $message['message'];
-        } else {
-            //failed to update category
-            echo "Fail to insert import order";
-        }
-    }
-
-    // $res2 = mysqli_query($conn1, "INSERT INTO tbl_food SET title = '$title', image_name = '$image_name', featured = '$featured', active = '$active',description='$des',category_id=$category ,price='$price'");
-
-
-    // //2. SQL to check whether the user with username and password exists or not==========================================
-    // $sql = "SELECT * FROM customer WHERE username='$username'";
-
-    // //3. Execute the Query
-    // $res = mysqli_query($conn1, $sql);
-
-    // //4. COunt rows to check whether the user exists or not
-    // $count = mysqli_num_rows($res);
-
-
-    // $user = $username;
-
-    // $sqlInsert1 = "CALL insertUser('$username', '$password' , 1);" ;
-    // $res1 = mysqli_query($conn1, $sqlInsert1);
-    // $count = mysqli_num_rows($res1);
-    // echo $count;
-    // $message = mysqli_fetch_assoc($res1);
-    //     // exit;
-    // // }
-    // if($message['message'] == 'oke roi do'){
-    //     echo $full_name.$email.$user.$address.$phone;
-    //     $res2 = mysqli_query($conn2, "INSERT INTO customer set full_name='$full_name', email='$email', Sex='M', userName='$user', address='$address', phone='$phone', status='Unactive' ");
-    //     header('location:'.view.'index.php');
-    //     $_SESSION['guess'] = $username;
-    // }
-
-
-
+    
 }
+
+/*
 if (isset($_POST['btnDel'])) {
     $idDel = mysqli_real_escape_string($conn1, $_POST['IO_id']);
     echo $idDel;
@@ -133,7 +85,7 @@ if (isset($_POST['editSubmit'])) {
     }
 
 }
-
+*/
 ?>
 
 <script>
@@ -145,7 +97,7 @@ if (isset($_POST['editSubmit'])) {
 
 <div class="container-fluid main-content">
     <div class="wrapper">
-        <h1>Manage by Luan</h1>
+        <h1>Rank Item in branch by Luan</h1>
         <div class="food-error-text">
             <!-- "alert alert-danger"    -->
         </div>
@@ -154,7 +106,7 @@ if (isset($_POST['editSubmit'])) {
         <!-- Button to Add Admin -->
         <div class="row">
             <div class="col-1"></div>
-            <button class="btn btn-primary" style="margin: 1%;" id="addNew" onclick="addNew();">Thêm đơn nhập hàng mới</button>
+            <button class="btn btn-primary" style="margin: 1%;" id="addNew" onclick="addNew();">Rank item in a branch</button>
         </div>
 
 
@@ -165,29 +117,16 @@ if (isset($_POST['editSubmit'])) {
             </div> -->
             <div class="form-group row">
                 <div class="col-1"></div>
-                <label class="col-2 col-form-label" for="id_new">Import ID:</label>
-                <input type="number" class="form-control col-7" id="id_new" name="id_new" value="<?php echo $snInit ?>" readonly>
+                <label class="col-2 col-form-label" for="id_new">Branch ID:</label>
+                <input type="number" class="form-control col-7" id="id_new" name="id_new" >
             </div>
+            
             <div class="form-group row">
                 <div class="col-1"></div>
-                <label class="col-2 col-form-label" for="date_new">Import Date:</label>
-                <input type="date" class="form-control col-7" id="date_new" name="date_new" value="<?php echo date("Y-m-d") ?>" readonly>
-            </div>
-            <div class="form-group row">
-                <div class="col-1"></div>
-                <label class="col-2 col-form-label" for="namePn_new">Name of partner:</label>
+                <label class="col-2 col-form-label" for="namePn_new">True is food:</label>
                 <input type="text" class="form-control col-7" id="namePn_new" name="namePn_new">
             </div>
-            <div class="form-group row">
-                <div class="col-1"></div>
-                <label class="col-2 col-form-label" for="phone_new">Phone number of partner:</label>
-                <input type="text" class="form-control col-7" id="phone_new" name="phone_new">
-            </div>
-            <div class="form-group row">
-                <div class="col-1"></div>
-                <label class="col-2 col-form-label" for="ID_b_new">ID of branch:</label>
-                <input type="number" class="form-control col-7" id="ID_b_new" name="ID_b_new">
-            </div>
+            
             <div class="form-group row">
                 <div class="offset-3">
                     <button class="btn btn-secondary ml-auto" style="min-width: 150%" name="insert_submit" id="insert_submit" type="submit">I'm sure about that</button>
@@ -205,16 +144,16 @@ if (isset($_POST['editSubmit'])) {
             <table class="table">
                 <tr>
                     <th>S.N.</th>
-                    <th>ID</th>
-                    <th>Date</th>
-                    <th>Name partner</th>
-                    <th>Phone number of partner</th>
-                    <th>ID_branch</th>
+                    <th>ID_item</th>
+                    <th>Quantity</th>
+                    <th>Name item</th>
+                    <!-- <th>Phone number of partner</th>
+                    <th>ID_branch</th> -->
                 </tr>
 
                 <?php
                 //Create a SQL Query to Get all the Food
-                $sql = "SELECT * FROM import_order";
+                $sql = "call printRankItem(".$id_new.", ".$namePn_new.");";
 
                 //Execute the qUery
                 $res = mysqli_query($conn1, $sql);
@@ -230,20 +169,20 @@ if (isset($_POST['editSubmit'])) {
                     //Get the Foods from Database and Display
                     while ($row = mysqli_fetch_assoc($res)) {
                         //get the values from individual columns
-                        $id = $row['ID'];
-                        $IDate = $row['IDate'];
-                        $Name_partner = $row['Name_partner'];
-                        $Phone_partner = $row['Phone_partner'];
-                        $ID_branch = $row['ID_branch'];
+                        $ID_item = $row['ID_item'];
+                        // $IDate = $row['IDate'];
+                        $Quantity = $row['Quantity'];
+                        $Name_item = $row['name_'];
+                        // $ID_branch = $row['ID_branch'];
                 ?>
-
+<!-- luan_RItem -->
                         <tr class="food-menu-box">
                             <td><?php echo $sn++; ?>. </td>
-                            <td><?php echo $id; ?></td>
-                            <td><?php echo $IDate; ?></td>
-                            <td><?php echo $Name_partner; ?></td>
-                            <td><?php echo $Phone_partner; ?></td>
-                            <td><?php echo $ID_branch; ?></td>
+                            <td><?php echo $ID_item; ?></td>
+                            <td><?php echo $Quantity; ?></td>
+                            <td><?php echo $Name_item; ?></td>
+                            
+                            
                             <td class="d-flex">
                                 <form class="form-delete-food" action="" method="POST">
                                     <input type="number" value="<?php echo $id; ?>" name="IO_id" hidden>

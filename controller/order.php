@@ -15,8 +15,10 @@
     $phone_guess = mysqli_real_escape_string($conn,$_POST['contact']);
     $email_guess = mysqli_real_escape_string($conn,$_POST['email']);
     $address_guess = mysqli_real_escape_string($conn,$_POST['address']);
+    $guest_id = mysqli_real_escape_string($conn2,$_POST['guestid']);
 
-    $now = date("Y-m-d h:i:sa");
+    $now = date("Y-m-d");
+    $res3 = mysqli_query($conn2,"INSERT INTO Cart SET ID_customer = $guest_id,Create_time='$now',total=0,State = 'U'");
     $res2 = mysqli_query($conn, "INSERT INTO tbl_order SET status='Đang xử lí', order_date='$now', total=0, customer_name='$name_guess', customer_contact='$phone_guess', customer_email='$email_guess', customer_address='$address_guess' ");
     if($res2==true)
     {
@@ -29,7 +31,7 @@
         echo "Failed to insert Category" ;
     }
     $last_id = $conn->insert_id;
-
+    $last_id2 = $conn2->insert_id;
     $id = $_POST['id'];
     $quantity = $_POST['quantity'];
     $total = 0;
@@ -41,5 +43,6 @@
         $res2 = mysqli_query($conn, "INSERT INTO tbl_food_in_order SET food_id='$val', quantity='$quantity[$key]', order_id='$last_id'");
     }   
     $res2 = mysqli_query($conn, "UPDATE tbl_order SET total='$total' WHERE id='$last_id'");
+    $res3 = mysqli_query($conn2, "UPDATE Cart SET total='$total' WHERE ID='$last_id2'");
     header('Location: /view/');
 ?>

@@ -28,7 +28,8 @@
                     <li><a href="manage-order.php">Order</a></li>
                     <li><a href="manage-news.php">News</a></li>
                     <li><a href="luan.php">Luan's IO</a></li>
-                    <li><a href="luan.php">Luan's Voucher</a></li>
+                    <li><a href="luan_RItem.php">Luan's Rank Item</a></li>
+                    <li><a href="luan_ROI.php">Luan's Rank IO</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
