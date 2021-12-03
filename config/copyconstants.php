@@ -17,11 +17,6 @@
     define('DB_USERNAME1', 'root');             //  your mysql server
     define('DB_PASSWORD1', '');                 //  your mysql server
     define('DB_NAME1', 'rxtw');                 //  your mysql server
-    
-    define('LOCALHOST2', 'localhost:8111');     // rxtw in phpmyadmin
-    define('DB_USERNAME2', 'root');             // rxtw in phpmyadmin
-    define('DB_PASSWORD2', '');                 // rxtw in phpmyadmin
-    define('DB_NAME2', 'rxtw');                 // rxtw in phpmyadmin
 
     $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD, DB_NAME) or die(mysqli_error()); //Database Connection
     // $db_select = mysqli_select_db($conn, DB_NAME) or die(mysqli_error()); //SElecting Database
